@@ -1,33 +1,45 @@
 # Context-Aware Role-Based Chatbot
 
-This is a role-based AI chatbot built with **Streamlit**, **LangChain**, and **MongoDB**. It supports dynamic roles like Engineer and Doctor using YAML templates and maintains conversation history using MongoDB to provide contextual responses.
+This is a role-based AI chatbot built with **Streamlit**, **LangChain**, and **MongoDB**. It supports dynamic roles like Engineer and Doctor using YAML templates and maintains conversation history in MongoDB to provide contextual responses using LangChain and LLMs.
 
 ---
 
 ## Features
 
-- Role-based prompt design (Engineer, Doctor, etc.)
-- Prompts defined in `templates/prompts.yaml`
-- Stores chat history in MongoDB
-- Uses last 10 messages as context
-- Integrates LangChain + deepseek-r1
-- Web interface built with Streamlit
-
+- Role-based character chat (Engineer, Doctor, etc.)
+- Prompts defined using `templates/prompts.yaml`
+- Uses MongoDB to store last 10 chat messages per session
+- Automatically passes conversation history as context
+- Built using Streamlit for a web interface
+- Integrated with LangChain + deepseek-r1
 ---
 
 ## Application Installation
 
-### 1. Clone the repository
+| Step | Command |
+|------|---------|
+| Clone the repository | `git clone https://github.com/your-username/your-chatbot-project.git` |
+| Navigate to project directory | `cd your-chatbot-project` |
+| Create virtual environment | `python -m venv venv` |
+| Activate environment (Windows) | `venv\Scripts\activate` |
+| Activate environment (macOS/Linux) | `source venv/bin/activate` |
+| Install dependencies | `pip install -r requirements.txt` |
+| Install MongoDB (if not installed) | [MongoDB Installation Guide](https://www.mongodb.com/docs/manual/installation/) |
 
-```bash
-git clone https://github.com/your-username/your-chatbot-project.git
+---
 
-### 2. Create virtual environment
+## Startup Apps
 
-```bash
-python -m venv venv
+| Task | Command |
+|------|---------|
+| Start MongoDB server | `mongod` |
+| Run the chatbot web app | `streamlit run main.py` |
+| Access the app | Open `http://localhost:8501` in your browser |
 
-### 1. Clone the repository
+---
 
-```bash
-git clone https://github.com/your-username/your-chatbot-project.git
+## Requirements
+
+streamlit pymongo langchain openai pyyaml.
+
+
