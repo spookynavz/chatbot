@@ -1,12 +1,13 @@
 import streamlit as st
 import uuid
 from factory.character_factory import CharacterFactory
+from services.chat_services import process_chat
 from services.database import ChatDB
 
 st.set_page_config(page_title="Chatbot")
 st.title("Multi-Character Chatbot")
 
-factory = CharacterFactory()
+#factory = CharacterFactory()
 db = ChatDB()
 session_id = st.session_state.get("session_id", str(uuid.uuid4()))
 st.session_state["session_id"] = session_id
@@ -23,12 +24,8 @@ context = "\n".join([f"{m['role']}: {m['message']}" for m in history])
 if st.button("Get Response"):
     if role and question:
         try:
-            character = factory.get_character(role.lower())
-            response = character.respond(question=question, context=context)
-
-             # Save to DB
-            db.save_message(session_id, "user", question)
-            db.save_message(session_id, "bot", response)
+            #character = factory.get_character(role.lower())
+            response = process_chat(session_id, role.lower(), question, context)
 
             st.markdown("Response")
             st.success(response)

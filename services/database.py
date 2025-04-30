@@ -19,4 +19,5 @@ class ChatDB:
         messages = self.collection.find(
             {"session_id": session_id}
         ).sort("timestamp", -1).limit(limit)
-        return list(reversed(messages))
+        return list(reversed(list(messages)))
+
